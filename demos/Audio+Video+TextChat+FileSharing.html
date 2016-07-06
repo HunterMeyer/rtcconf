@@ -6,8 +6,6 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://cdn.webrtc-experiment.com/style.css">
 
-    <title>Audio+Video+TextChat+FileSharing using RTCMultiConnection</title>
-
     <meta name="description" content="Share audio, video along with text chat and filesharing using RTCMultiConnection" />
     <meta name="keywords" content="WebRTC,RTCMultiConnection,Demos,Experiments,Samples,Examples" />
 
@@ -38,34 +36,15 @@
 <body>
     <article>
 
-        <header style="text-align: center;">
-            <h1>Audio+Video+TextChat+FileSharing using RTCMultiConnection</h1>
-            <p>
-                <a href="https://rtcmulticonnection.herokuapp.com/">HOME</a>
-                <span> &copy; </span>
-                <a href="http://www.MuazKhan.com/" target="_blank">Muaz Khan</a> .
-                <a href="http://twitter.com/WebRTCWeb" target="_blank" title="Twitter profile for WebRTC Experiments">@WebRTCWeb</a> .
-                <a href="https://github.com/muaz-khan?tab=repositories" target="_blank" title="Github Profile">Github</a> .
-                <a href="https://github.com/muaz-khan/RTCMultiConnection/issues?state=open" target="_blank">Latest issues</a> .
-                <a href="https://github.com/muaz-khan/RTCMultiConnection/commits/master" target="_blank">What's New?</a>
-            </p>
-        </header>
 
         <div class="github-stargazers"></div>
 
-        <blockquote>
-            Mesh networking model is used to implement many-to-many video/data connection.<br>
-            All users can watch each other; all of them can speak as well.<br>
-            All users can exchange chat messages.<br>
-            ALl users can share files as well. If you share a file, all others will receive it.
-        </blockquote>
 
         <section class="experiment">
             <div class="make-center">
                 <input type="text" id="room-id" value="abcdef">
                 <button id="open-room">Open Room</button>
                 <button id="join-room">Join Room</button>
-                <button id="open-or-join-room">Auto Open Or Join Room</button>
 
                 <br><br>
                 <input type="text" id="input-text-chat" placeholder="Enter Text Chat" disabled>
@@ -113,14 +92,6 @@
                 connection.join(document.getElementById('room-id').value);
             };
 
-            document.getElementById('open-or-join-room').onclick = function() {
-                disableInputButtons();
-                connection.openOrJoin(document.getElementById('room-id').value, function(isRoomExists, roomid) {
-                    if(!isRoomExists) {
-                        showRoomURL(roomid);
-                    }
-                });
-            };
 
             document.getElementById('btn-leave-room').onclick = function() {
                 this.disabled = true;
@@ -250,7 +221,6 @@
                 document.getElementById('input-text-chat').disabled = true;
                 document.getElementById('btn-leave-room').disabled = true;
 
-                document.getElementById('open-or-join-room').disabled = false;
                 document.getElementById('open-room').disabled = false;
                 document.getElementById('join-room').disabled = false;
                 document.getElementById('room-id').disabled = false;
@@ -270,7 +240,6 @@
             };
 
             function disableInputButtons() {
-                document.getElementById('open-or-join-room').disabled = true;
                 document.getElementById('open-room').disabled = true;
                 document.getElementById('join-room').disabled = true;
                 document.getElementById('room-id').disabled = true;
@@ -284,11 +253,9 @@
                 var roomHashURL = '#' + roomid;
                 var roomQueryStringURL = '?roomid=' + roomid;
 
-                var html = '<h2>Unique URL for your room:</h2><br>';
+                var html = 'Unique URL for your room:<br>';
 
-                html += 'Hash URL: <a href="' + roomHashURL + '" target="_blank">' + roomHashURL + '</a>';
-                html += '<br>';
-                html += 'QueryString URL: <a href="' + roomQueryStringURL + '" target="_blank">' + roomQueryStringURL + '</a>';
+                html += '<a href="' + roomHashURL + '" target="_blank">' + roomHashURL + '</a>';
 
                 var roomURLsDiv = document.getElementById('room-urls');
                 roomURLsDiv.innerHTML = html;
@@ -347,40 +314,7 @@
             }
         </script>
 
-        <section class="experiment own-widgets latest-commits">
-            <h2 class="header" id="updates" style="color: red;padding-bottom: .1em;"><a href="https://github.com/muaz-khan/RTCMultiConnection/commits/master">Latest Updates</a></h2>
-            <div id="github-commits"></div>
-        </section>
-
-        <section class="experiment own-widgets">
-            <h2 class="header" id="updates" style="color: red;padding-bottom: .1em;"><a href="https://github.com/muaz-khan/RTCMultiConnection/issues">Latest Issues</a></h2>
-            <div id="github-issues"></div>
-        </section>
-
-        <section class="experiment">
-            <h2 class="header" id="feedback">Feedback</h2>
-            <div>
-                <textarea id="message" style="height: 8em; margin: .2em; width: 98%; border: 1px solid rgb(189, 189, 189); outline: none; resize: vertical;" placeholder="Have any message? Suggestions or something went wrong?"></textarea>
-            </div>
-            <button id="send-message" style="font-size: 1em;">Send Message</button><small style="margin-left:1em;">Enter your email too; if you want "direct" reply!</small>
-        </section>
-
-        <a href="https://github.com/muaz-khan/RTCMultiConnection" class="fork-left"></a>
-
-        <script>
-            window.useThisGithubPath = 'muaz-khan/RTCMultiConnection';
-        </script>
-        <script src="https://cdn.webrtc-experiment.com/commits.js" async></script>
-
     </article>
-
-    <footer>
-        <p>
-            <a href="https://www.webrtc-experiment.com">WebRTC Experiments</a> © <a href="https://plus.google.com/+MuazKhan" rel="author" target="_blank">Muaz Khan</a>
-            <a href="mailto:muazkh@gmail.com" target="_blank">muazkh@gmail.com</a>
-            <a href="https://github.com/muaz-khan" target="_blank">Github</a>
-        </p>
-    </footer>
 
 </body>
 
